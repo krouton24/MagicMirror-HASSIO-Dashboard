@@ -1,0 +1,202 @@
+/*****************************************************
+ * Magic Mirror                                      *
+ * Custom CSS                                        *
+ *                                                   *
+ * By Michael Teeuw http://michaelteeuw.nl           *
+ * MIT Licensed.                                     *
+ *                                                   *
+ * Add any custom CSS below.                         *
+ * Changes to this files will be ignored by GIT. *
+ *****************************************************/
+html {
+    cursor: default;
+}
+ body {
+	margin: 0px;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	color: #aaa;
+	font-weight: 400;
+	font-size: 2em;
+	line-height: 1em; 
+    font-family: "Nunito";
+ }
+
+@font-face {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 100;
+  src: url("nunito.ttf") format("truetype");
+  src: url("nunito.woff") format("woff");
+}
+
+.normal {
+    color: white;
+    font-size: 0px;
+    text-align: -webkit-center;
+}
+td.title {
+    font-size: 36px;
+    line-height: 40px;
+    padding-top: 5px;
+}
+.region.fullscreen {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    pointer-events: none;
+}
+.region.top .container {
+    margin-bottom: 0px;
+}
+.region.bar {
+   top: 0px;
+}
+.region.top {
+   top: 0px;
+}
+/*    CLOCK  */
+.region.top.right {
+  /*  margin-right: 5px;
+    height: 1773px;
+    top: 100px;     */
+    z-index: 23;
+    font-family: Nunito;
+}
+.region.upper.third {
+    top: -45px;
+    width: 0px;
+    transform: scale(0.8);
+    margin-left: 217px;
+    z-index: -6;
+}
+/*    WEATHER  */
+.region.top.left {
+    margin-left: -112px;
+    height: 800px;
+    transform: scale(0.75);
+    margin-top: 949px;
+}
+.region.lower.third {
+    top: 960px;
+    transform: scale(.7);
+    width: 567px;
+}
+/*    PHOTOS  */
+.region.top.center {
+    width: 1080px;
+   /* height: 1052px;
+    top: 29px;  */
+}
+.region.bottom.center {
+    left: 387px;
+    margin-bottom: 54px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    height: 130px;
+    border-color: white;
+    border-style: solid;
+    border-width: 0px;
+    margin-left: 57px;
+    width: 270px;
+    font-weight: 600;
+}
+.region.bottom.left {
+    margin-left: 25px;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+    height: 130px;
+    border-color: white;
+    border-style: solid;
+    border-width: 0px;
+    margin-bottom: 54px;
+    width: 270px;
+    font-weight: 600;
+}
+/*    CALENDAR  */
+.region.bottom.right {
+   /* bottom: 100%; */
+    bottom: -400px;
+    z-index: 6;
+}
+.medium {
+    font-size: 40px;
+    line-height: 35px;
+}
+.small {
+    font-size: 35px;
+    line-height: 10px;
+}
+.dimmed {
+    color: white;
+}
+/*    SOLAR  */
+.region.middle.center {
+    top: 0;
+    margin-top: 1455px;
+    margin-left: -535px;
+    transform: scale(0.4);
+    z-index: 1;
+}
+.region.bottom .module {
+    margin-top: 0px;
+}
+div.nnormal.xsmall {
+    font-size: 0px;
+}
+div.region.fullscreen.below {
+    width: 580px;
+    height: 920px;
+    transform: scale(0.78);
+    top: -69px;
+    left: 106px;
+}
+div.region.fullscreen.above {
+    width: 580px;
+    height: 920px;
+    transform: scale(0.78);
+    top: -69px;
+    left: 106px;
+}
+.fa, .fas {
+    font-weight: 100;
+    font-size: 0px;
+}
+.updateinfo {
+    font-size: 0px; 
+}
+
+/*    CLOCK   */
+.clock .time	{
+    color: white;
+    width: 450px;
+    height: auto;
+    text-align: center;
+    font-size: 160px;
+    font-weight: 400;
+    line-height: 1;
+    margin-left: 0px;
+    margin-bottom: -55px;
+    font-family: Nunito;
+}
+.clock .date.normal.medium	{
+	color: white;
+	width: 450px;
+	height: auto;
+	text-align: center;
+	font-size: 60px;
+    font-weight: 600;
+    margin-top: 1110px;
+    line-height: 1;
+    margin-left: 0px;
+    margin-bottom: -5px;
+    margin-right: 25px;
+    font-family: Nunito;
+} 
+
+}
