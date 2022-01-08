@@ -1,0 +1,863 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: sensor.home_mdi_icon_0
+        size: 100%
+        show_icon: false
+        show_state: false
+        show_units: false
+        show_name: false
+        show_entity_picture: true
+        styles:
+          card:
+            - height: 115px
+            - width: 110px
+            - padding: 0px 0px 0px 0px
+          icon:
+            - padding: 7px 0px 0px 18px
+        state:
+          - value: mdi:weather-sunny
+            entity_picture: |
+              [[[
+                if (states['sun.sun'].state == 'above_horizon')
+                  return "/local/icons/weather/clearr.png";
+                else
+                  return "/local/icons/weather/clearr-night.png";
+              ]]]
+          - value: mdi:weather-rainy
+            entity_picture: |
+              [[[
+                if (states['sun.sun'].state == 'above_horizon')
+                  return "/local/icons/weather/rainyy.png";
+                else
+                  return "/local/icons/weather/rainyy-night.png";
+              ]]]
+          - value: mdi:weather-night
+            entity_picture: |
+              [[[
+                if (states['sun.sun'].state == 'above_horizon')
+                  return "/local/icons/weather/clearr.png";
+                else
+                  return "/local/icons/weather/clearr-night.png";
+              ]]]
+          - value: mdi:weather-cloudy
+            entity_picture: |
+              [[[
+                if (states['sun.sun'].state == 'above_horizon')
+                  return "/local/icons/weather/cloudyy.png";
+                else
+                  return "/local/icons/weather/cloudyy-night.png";
+              ]]]
+          - value: mdi:weather-hurricane
+            entity_picture: /local/icons/weather/windy.png
+          - value: mdi:weather-hazy
+            entity_picture: /local/icons/weather/haze.png
+          - value: mdi:weather-fog
+            entity_picture: /local/icons/weather/fog.png
+          - value: mdi:snowflake-melt
+            entity_picture: /local/icons/weather/snowy-and-sleet-mix.png
+          - value: mdi:weather-pouring
+            entity_picture: |
+              [[[
+                if (states['sun.sun'].state == 'above_horizon')
+                  return "/local/icons/weather/rainyy.png";
+                else
+                  return "/local/icons/weather/rainyy-night.png";
+              ]]]
+          - value: mdi:weather-partly-rainy
+            entity_picture: |
+              [[[
+                if (states['sun.sun'].state == 'above_horizon')
+                  return "/local/icons/weather/showerss.png";
+                else
+                  return "/local/icons/weather/showerss-night.png";
+              ]]]
+          - value: mdi:weather-light-showers
+            entity_picture: |
+              [[[
+                if (states['sun.sun'].state == 'above_horizon')
+                  return "/local/icons/weather/showerss.png";
+                else
+                  return "/local/icons/weather/showerss-night.png";
+              ]]]
+          - value: mdi:weather-partly-cloudy
+            entity_picture: |
+              [[[
+                if (states['sun.sun'].state == 'above_horizon')
+                  return "/local/icons/weather/mostlyy-sunny.png";
+                else
+                  return "/local/icons/weather/mostlyy-sunny-night.png";
+              ]]]
+          - value: mdi:weather-snowy
+            entity_picture: /local/icons/weather/snowy.png
+          - value: mdi:weather-lightning-rainy
+            entity_picture: |
+              [[[
+                if (states['sun.sun'].state == 'above_horizon')
+                  return "/local/icons/weather/stormss.png";
+                else
+                  return "/local/icons/weather/stormss-night.png";
+              ]]]
+          - value: mdi:weather-windy
+            entity_picture: /local/icons/weather/windyy.png
+      - type: custom:button-card
+        entity: sensor.outside_avg_temp
+        styles:
+          card:
+            - height: 115px
+            - width: 205px
+            - font-weight: bold
+            - font-family: NunitoBold
+          state:
+            - font-size: 100px
+            - padding: 0px 0px 0px 0px
+            - color: white
+        show_icon: false
+        show_state: true
+        show_name: false
+        show_units: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            styles:
+              card:
+                - height: 116px
+                - width: 150px
+              grid:
+                - grid-template-areas: '"title" "high"'
+                - grid-template-columns: 1fr
+                - grid-template-rows: 55% 60%
+            custom_fields:
+              title:
+                card:
+                  type: custom:button-card
+                  entity: |
+                    [[[
+                      if (states['sun.sun'].state == 'above_horizon') 
+                        return "sensor.nextsunset";
+                      else
+                        return "sensor.nextsunrise";
+                    ]]]
+                  layout: icon_state
+                  entity_picture: |
+                    [[[
+                      if (states['sun.sun'].state == 'above_horizon') 
+                        return "/local/icons/weather/sunset.png";
+                      else
+                        return "/local/icons/weather/sunrise.png";
+                    ]]]
+                  icon: |
+                    [[[
+                      if (states['sun.sun'].state == 'above_horizon') 
+                        return "mdi:arrow-down-thick";
+                      else
+                        return "mdi:arrow-up-thick";
+                    ]]]
+                  show_state: true
+                  show_name: false
+                  show_label: false
+                  show_icon: true
+                  show_entity_picture: false
+                  styles:
+                    state:
+                      - font-size: 130%
+                      - color: white
+                      - margin-left: '-30%'
+                      - white-space: initial
+                      - text-overflow: initial
+                      - overflow: initial
+                      - font-family: NunitoBold
+                    icon:
+                      - width: 50%
+                      - margin-left: 20%
+                      - margin-top: 0%
+                      - color: '#ffe58d'
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+              high:
+                card:
+                  type: custom:button-card
+                  entity: |
+                    [[[
+                      if (states['sun.sun'].state == 'above_horizon')
+                        return "sensor.home_temp_max_0";
+                      else
+                        return "sensor.home_temp_min_1";
+                    ]]]
+                  show_state: true
+                  show_name: false
+                  show_label: false
+                  show_icon: false
+                  show_units: false
+                  styles:
+                    state:
+                      - font-size: 50px
+                      - font-weight: bold
+                      - font-family: NunitoBold
+                      - color: |
+                          [[[
+                            if (states['sun.sun'].state == 'above_horizon')
+                              return "#ff785b";
+                            else
+                              return "#90daff";
+                          ]]]
+                      - margin-bottom: 15px
+                  style: |
+                    ha-card {
+                      box-shadow: none;
+                    }
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: sensor.home_short_text_0
+        show_icon: false
+        show_state: true
+        styles:
+          card:
+            - height: 116px
+            - width: 322px
+          state:
+            - font-size: 250%
+            - font-weight: bold
+            - white-space: normal
+            - text-overflow: initial
+            - overflow: auto
+            - word-wrap: normal
+            - padding: 0px 0px 0px 0px
+            - color: white
+            - font-family: NunitoBold
+        show_name: false
+        show_units: false
+      - type: custom:swipe-card
+        parameters:
+          effect: fade
+          slideShadows: false
+          slidesPerView: auto
+          autoplay:
+            delay: 5000
+          speed: 1000
+          scrollbar:
+            hide: true
+            draggable: false
+            snapOnRelease: true
+        cards:
+          - type: conditional
+            conditions:
+              - entity: sensor.rain_today
+                state: 'yes'
+            card:
+              type: custom:button-card
+              styles:
+                card:
+                  - height: 116px
+                  - width: 150px
+                grid:
+                  - grid-template-areas: '"chance" "range"'
+                  - grid-template-columns: 1fr
+                  - grid-template-rows: 50% 60%
+              custom_fields:
+                chance:
+                  card:
+                    type: custom:button-card
+                    entity: sensor.home_rain_chance_0
+                    show_state: true
+                    show_name: false
+                    show_label: false
+                    show_icon: false
+                    styles:
+                      state:
+                        - white-space: initial
+                        - text-overflow: initial
+                        - overflow: initial
+                        - font-size: 32px
+                        - color: white
+                        - font-family: NunitoBold
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+                range:
+                  card:
+                    type: custom:button-card
+                    entity: sensor.home_rain_amount_range_0
+                    show_state: true
+                    show_name: false
+                    show_label: false
+                    show_icon: false
+                    styles:
+                      state:
+                        - white-space: initial
+                        - text-overflow: initial
+                        - overflow: initial
+                        - font-size: 160%
+                        - color: white
+                        - font-family: NunitoBold
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+          - type: conditional
+            conditions:
+              - entity: sensor.any_rain_today
+                state: 'yes'
+            card:
+              type: custom:button-card
+              styles:
+                card:
+                  - height: 116px
+                  - width: 150px
+                grid:
+                  - grid-template-areas: '"label" "since"'
+                  - grid-template-columns: 1fr
+                  - grid-template-rows: 50% 50%
+              custom_fields:
+                label:
+                  card:
+                    type: custom:button-card
+                    label: Rainfall
+                    show_state: false
+                    show_name: false
+                    show_label: true
+                    show_icon: false
+                    styles:
+                      label:
+                        - white-space: initial
+                        - text-overflow: initial
+                        - overflow: initial
+                        - font-size: 150%
+                        - color: white
+                        - font-family: NunitoBold
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+                since:
+                  card:
+                    type: custom:button-card
+                    entity: sensor.home_rain_since
+                    show_state: true
+                    show_name: false
+                    show_label: false
+                    show_icon: false
+                    show_units: true
+                    styles:
+                      state:
+                        - font-size: 200%
+                        - font-weight: bold
+                        - color: white
+                        - white-space: initial
+                        - text-overflow: initial
+                        - overflow: initial
+                        - font-family: NunitoBold
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }                             
+          - type: conditional
+            conditions:
+              - entity: sun.sun
+                state: above_horizon
+            card:
+              type: custom:button-card
+              styles:
+                card:
+                  - height: 116px
+                  - width: 150px
+                grid:
+                  - grid-template-areas: '"chan" "rang"'
+                  - grid-template-columns: 1fr
+                  - grid-template-rows: 30% 70%
+              custom_fields:
+                chan:
+                  card:
+                    type: custom:button-card
+                    label: Current UV
+                    show_state: false
+                    show_name: false
+                    show_label: true
+                    show_icon: false
+                    show_units: false
+                    styles:
+                      label:
+                        - white-space: initial
+                        - text-overflow: initial
+                        - overflow: initial
+                        - font-size: 140%
+                        - color: white
+                        - font-family: NunitoBold
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      }
+                rang:
+                  card:
+                    type: custom:button-card
+                    entity: sensor.uv_formatted
+                    show_state: true
+                    show_label: false
+                    show_name: false
+                    show_icon: false
+                    show_units: false
+                    styles:
+                      state:
+                        - font-size: 190%
+                        - font-weight: bold
+                        - white-space: initial
+                        - text-overflow: initial
+                        - overflow: initial
+                        - font-family: NunitoBold
+                        - color: |
+                            [[[
+                              if (states['sensor.uv_formatted'].state == 'Low') return "#82e0aa";
+                              if (states['sensor.uv_formatted'].state == 'Moderate') return "#f7dc6f";
+                              if (states['sensor.uv_formatted'].state == 'High') return "#eb984e";
+                              if (states['sensor.uv_formatted'].state == 'Very High') return "#ec7063";
+                              if (states['sensor.uv_formatted'].state == 'Extreme') return "#a93226";
+                              if (states['sun.sun'].state == 'below_horizon') return "#0a0a0a";
+                              else return "#000000";
+                            ]]]
+                    style: |
+                      ha-card {
+                        box-shadow: none;
+                      } 
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        color_type: card
+        color: rgba(255, 255, 255, 0.00)
+        styles:
+          card:
+            - border-radius: 0px
+            - border-right: 2px
+            - border-right-style: solid
+            - border-right-color: white
+            - height: 260px
+            - width: 155px
+          grid:
+            - grid-template-areas: '"day" "logo" "min" "max" "rain"'
+            - grid-template-columns: 1fr
+            - grid-template-rows: 40px 70px 60px 50px 40px
+        custom_fields:
+          day:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.weather_tomorrow
+              show_state: true
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                state:
+                  - font-size: 30px
+                  - color: white
+                  - font-family: NunitoBold
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+          logo:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.home_mdi_icon_1
+              size: 70px
+              show_icon: false
+              show_state: false
+              show_units: false
+              show_name: false
+              show_entity_picture: true
+              state:
+                - value: mdi:weather-sunny
+                  entity_picture: /local/icons/weather/clearr.png
+                - value: mdi:weather-rainy
+                  entity_picture: /local/icons/weather/rainyy.png
+                - value: mdi:weather-night
+                  entity_picture: /local/icons/weather/clearr.png";
+                - value: mdi:weather-cloudy
+                  entity_picture: /local/icons/weather/cloudyy.png
+                - value: mdi:weather-hurricane
+                  entity_picture: /local/icons/weather/windy.png
+                - value: mdi:weather-hazy
+                  entity_picture: /local/icons/weather/haze.png
+                - value: mdi:weather-fog
+                  entity_picture: /local/icons/weather/fog.png
+                - value: mdi:snowflake-melt
+                  entity_picture: /local/icons/weather/snowy-and-sleet-mix.png
+                - value: mdi:weather-pouring
+                  entity_picture: /local/icons/weather/rainyy.png
+                - value: mdi:weather-partly-rainy
+                  entity_picture: /local/icons/weather/showerss.png
+                - value: mdi:weather-light-showers
+                  entity_picture: /local/icons/weather/showerss.png
+                - value: mdi:weather-partly-cloudy
+                  entity_picture: /local/icons/weather/mostlyy-sunny.png
+                - value: mdi:weather-snowy
+                  entity_picture: /local/icons/weather/snowy.png
+                - value: mdi:weather-lightning-rainy
+                  entity_picture: /local/icons/weather/stormss.png
+                - value: mdi:weather-windy
+                  entity_picture: /local/icons/weather/windyy.png
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+          min:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.home_temp_min_1
+              show_icon: false
+              show_state: true
+              styles:
+                state:
+                  - font-size: 45px
+                  - padding: 0px 0px
+                  - color: '#90daff'
+                  - font-family: NunitoBold
+              show_name: false
+              show_units: false
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+          max:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.home_temp_max_1
+              show_icon: false
+              show_state: true
+              styles:
+                state:
+                  - font-size: 45px
+                  - padding: 0px 0px
+                  - color: '#ff785b'
+                  - font-family: NunitoBold
+              show_name: false
+              show_units: false
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+          rain:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.rain_summary_tomorrow
+              show_state: true
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                state:
+                  - font-size: 15px
+                  - color: white
+                  - white-space: normal
+                  - text-overflow: initial
+                  - overflow: auto
+                  - word-wrap: normal
+                  - font-family: NunitoBold
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+      - type: custom:button-card
+        color_type: card
+        color: rgba(255, 255, 255, 0.00)
+        styles:
+          card:
+            - border-radius: 0px
+            - border-right: 2px
+            - border-right-style: solid
+            - border-right-color: white
+            - height: 260px
+            - width: 155px
+          grid:
+            - grid-template-areas: '"day" "logo" "min" "max" "rain"'
+            - grid-template-columns: 1fr
+            - grid-template-rows: 40px 70px 60px 50px 40px
+        custom_fields:
+          day:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.weather_in_two_days
+              show_state: true
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                state:
+                  - font-size: 30px
+                  - color: white
+                  - font-family: NunitoBold
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+          logo:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.home_mdi_icon_2
+              size: 70px
+              show_icon: false
+              show_state: false
+              show_units: false
+              show_name: false
+              show_entity_picture: true
+              state:
+                - value: mdi:weather-sunny
+                  entity_picture: /local/icons/weather/clearr.png
+                - value: mdi:weather-rainy
+                  entity_picture: /local/icons/weather/rainyy.png
+                - value: mdi:weather-night
+                  entity_picture: /local/icons/weather/clearr.png";
+                - value: mdi:weather-cloudy
+                  entity_picture: /local/icons/weather/cloudyy.png
+                - value: mdi:weather-hurricane
+                  entity_picture: /local/icons/weather/windy.png
+                - value: mdi:weather-hazy
+                  entity_picture: /local/icons/weather/haze.png
+                - value: mdi:weather-fog
+                  entity_picture: /local/icons/weather/fog.png
+                - value: mdi:snowflake-melt
+                  entity_picture: /local/icons/weather/snowy-and-sleet-mix.png
+                - value: mdi:weather-pouring
+                  entity_picture: /local/icons/weather/rainyy.png
+                - value: mdi:weather-partly-rainy
+                  entity_picture: /local/icons/weather/showerss.png
+                - value: mdi:weather-light-showers
+                  entity_picture: /local/icons/weather/showerss.png
+                - value: mdi:weather-partly-cloudy
+                  entity_picture: /local/icons/weather/mostlyy-sunny.png
+                - value: mdi:weather-snowy
+                  entity_picture: /local/icons/weather/snowy.png
+                - value: mdi:weather-lightning-rainy
+                  entity_picture: /local/icons/weather/stormss.png
+                - value: mdi:weather-windy
+                  entity_picture: /local/icons/weather/windyy.png
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+          min:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.home_temp_min_2
+              show_icon: false
+              show_state: true
+              styles:
+                state:
+                  - font-size: 45px
+                  - padding: 0px 0px
+                  - color: '#90daff'
+                  - font-family: NunitoBold
+              show_name: false
+              show_units: false
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+          max:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.home_temp_max_2
+              show_icon: false
+              show_state: true
+              styles:
+                state:
+                  - font-size: 45px
+                  - padding: 0px 0px
+                  - color: '#ff785b'
+                  - font-family: NunitoBold
+              show_name: false
+              show_units: false
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }  
+          rain:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.rain_summary_in_two_days
+              show_state: true
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                state:
+                  - font-size: 15px
+                  - color: white
+                  - white-space: normal
+                  - text-overflow: initial
+                  - overflow: auto
+                  - word-wrap: normal
+                  - font-family: NunitoBold
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+      - type: custom:button-card
+        color_type: card
+        color: rgba(255, 255, 255, 0.0)
+        styles:
+          card:
+            - border-radius: 0px
+            - border-right: 0px
+            - border-right-style: solid
+            - border-right-color: white
+            - height: 260px
+            - width: 155px
+          grid:
+            - grid-template-areas: '"day" "logo" "min" "max" "rain"'
+            - grid-template-columns: 1fr
+            - grid-template-rows: 40px 70px 60px 50px 40px
+        custom_fields:
+          day:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.weather_in_three_days
+              show_state: true
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                state:
+                  - font-size: 30px
+                  - color: white
+                  - font-family: NunitoBold
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+          logo:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.home_mdi_icon_3
+              size: 70px
+              show_icon: false
+              show_state: false
+              show_units: false
+              show_name: false
+              show_entity_picture: true
+              state:
+                - value: mdi:weather-sunny
+                  entity_picture: /local/icons/weather/clearr.png
+                - value: mdi:weather-rainy
+                  entity_picture: /local/icons/weather/rainyy.png
+                - value: mdi:weather-night
+                  entity_picture: /local/icons/weather/clearr.png";
+                - value: mdi:weather-cloudy
+                  entity_picture: /local/icons/weather/cloudyy.png
+                - value: mdi:weather-hurricane
+                  entity_picture: /local/icons/weather/windy.png
+                - value: mdi:weather-hazy
+                  entity_picture: /local/icons/weather/haze.png
+                - value: mdi:weather-fog
+                  entity_picture: /local/icons/weather/fog.png
+                - value: mdi:snowflake-melt
+                  entity_picture: /local/icons/weather/snowy-and-sleet-mix.png
+                - value: mdi:weather-pouring
+                  entity_picture: /local/icons/weather/rainyy.png
+                - value: mdi:weather-partly-rainy
+                  entity_picture: /local/icons/weather/showerss.png
+                - value: mdi:weather-light-showers
+                  entity_picture: /local/icons/weather/showerss.png
+                - value: mdi:weather-partly-cloudy
+                  entity_picture: /local/icons/weather/mostlyy-sunny.png
+                - value: mdi:weather-snowy
+                  entity_picture: /local/icons/weather/snowy.png
+                - value: mdi:weather-lightning-rainy
+                  entity_picture: /local/icons/weather/stormss.png
+                - value: mdi:weather-windy
+                  entity_picture: /local/icons/weather/windyy.png
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+          min:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.home_temp_min_3
+              show_icon: false
+              show_state: true
+              styles:
+                state:
+                  - font-size: 45px
+                  - padding: 0px 0px
+                  - color: '#90daff'
+                  - font-family: NunitoBold
+              show_name: false
+              show_units: false
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }
+          max:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.home_temp_max_3
+              show_icon: false
+              show_state: true
+              styles:
+                state:
+                  - font-size: 45px
+                  - padding: 0px 0px
+                  - color: '#ff785b'
+                  - font-family: NunitoBold
+              show_name: false
+              show_units: false
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }                
+          rain:
+            card:
+              type: custom:button-card
+              color_type: card
+              color: hsla(0, 100%, 100%, 0)
+              entity: sensor.rain_summary_in_three_days
+              show_state: true
+              show_name: false
+              show_label: false
+              show_icon: false
+              styles:
+                state:
+                  - font-size: 15px
+                  - color: white
+                  - white-space: normal
+                  - text-overflow: initial
+                  - overflow: auto
+                  - word-wrap: normal
+                  - font-family: NunitoBold
+              style: |
+                ha-card {
+                  box-shadow: none;
+                }

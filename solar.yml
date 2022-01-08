@@ -1,0 +1,333 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: sensor.fronius_inverter_panel_status
+        show_icon: false
+        show_state: true
+        show_units: false
+        show_name: false
+        state:
+          - operator: '>='
+            value: 3.5
+            styles:
+              state:
+                - color: '#B7FFB7'
+                - font-family: Nunito
+                - font-size: 100px
+              label:
+                - color: white
+              name:
+                - color: white
+              icon:
+                - color: white
+          - operator: '>='
+            value: 1.5
+            styles:
+              state:
+                - color: '#FFC580'
+                - font-size: 100px
+                - font-family: Nunito
+              label:
+                - color: white
+              name:
+                - color: white
+              icon:
+                - color: white
+          - operator: '>'
+            value: 0
+            styles:
+              state:
+                - color: '#F98C8C'
+                - font-size: 100px
+                - font-family: Nunito
+              label:
+                - color: white
+              name:
+                - color: white
+              icon:
+                - color: white
+          - operator: '=='
+            value: unavalable
+            styles:
+              state:
+                - color: black
+                - font-size: 0px
+          - operator: '=='
+            value: 0
+            styles:
+              state:
+                - color: white
+                - font-size: 100px
+                - font-family: Nunito
+              label:
+                - color: white
+              name:
+                - color: white
+              icon:
+                - color: white
+        styles:
+          card:
+            - height: 240px
+            - width: 300px
+            - background-color: black
+            - background-image: url("/local/solarsuun.png")
+            - background-size: 100px 100px
+            - background-repeat: no-repeat
+            - background-position: 50% 10%
+          state:
+            - padding: 130px 0px 0px 0px
+      - type: custom:button-card
+        entity: sensor.current_house_consumption
+        show_icon: false
+        show_state: true
+        show_units: false
+        show_name: false
+        state:
+          - operator: '>='
+            value: 2
+            styles:
+              card:
+                - background-color: black
+              state:
+                - color: '#F98C8C'
+                - font-size: 100px
+                - font-family: Nunito
+              label:
+                - color: white
+              name:
+                - color: white
+              icon:
+                - color: white
+          - operator: '>='
+            value: 0
+            styles:
+              card:
+                - background-color: black
+              state:
+                - color: '#B7FFB7'
+                - font-size: 100px
+                - font-family: Nunito
+              label:
+                - color: white
+              name:
+                - color: white
+              icon:
+                - color: white
+        styles:
+          card:
+            - height: 240px
+            - width: 300px
+            - background-color: black
+            - background-image: url("/local/solarhouuse.png")
+            - background-size: 100px 100px
+            - background-repeat: no-repeat
+            - background-position: 50% 10%
+          state:
+            - padding: 130px 0px 0px 0px
+      - type: custom:button-card
+        entity: sensor.current_grid_export_round
+        show_icon: false
+        show_state: true
+        show_units: false
+        show_name: false
+        state:
+          - operator: <=
+            value: 0
+            styles:
+              card:
+                - background-color: black
+              state:
+                - color: '#ff8a8a'
+                - font-size: 100px
+                - font-family: Nunito
+              label:
+                - color: white
+              name:
+                - color: white
+              icon:
+                - color: white
+          - operator: '>='
+            value: 0
+            styles:
+              card:
+                - background-color: black
+              state:
+                - color: '#B7FFB7'
+                - font-size: 100px
+                - font-family: Nunito
+              label:
+                - color: white
+              name:
+                - color: white
+              icon:
+                - color: white
+        styles:
+          card:
+            - height: 240px
+            - width: 300px
+            - background-color: black
+            - background-image: url("/local/solarpole.png")
+            - background-size: 100px 100px
+            - background-repeat: no-repeat
+            - background-position: 60% 10%
+          state:
+            - padding: 130px 0px 0px 0px
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: sensor.fronius_inverter_day_energy
+        show_icon: false
+        show_state: true
+        show_units: true
+        show_name: false
+        show_last_changed: false
+        state:
+          - operator: '=='
+            value: unavaiable
+            styles:
+              state:
+                - font-size: 0px
+        styles:
+          units:
+            - size: 10px
+          card:
+            - width: 300px
+            - height: 60px
+            - background-color: black
+          state:
+            - font-size: 50px
+            - color: white
+            - font-family: Nunito
+      - type: custom:button-card
+        styles:
+          custom_fields:
+            import:
+              - padding-bottom: 0px
+              - background-color: black
+            consume:
+              - padding-bottom: 0px
+              - background-color: black
+          card:
+            - width: 300px
+            - height: 60px
+            - background-color: black
+          grid:
+            - grid-template-areas: '"consume import"'
+            - grid-template-columns: 50% 50%
+            - grid-template-rows: 1fr
+        custom_fields:
+          import:
+            card:
+              type: custom:button-card
+              entity: sensor.daily_grid_usage_adjusted
+              show_icon: false
+              show_state: true
+              show_units: false
+              show_name: false
+              show_last_changed: false
+              styles:
+                card:
+                  - width: 150px
+                  - height: 80px
+                  - background-color: black
+                state:
+                  - font-size: 50px
+                  - font-family: Nunito
+                  - padding-top: 0px
+                  - padding-bottom: 40px
+                  - padding-left: 0px
+                  - padding-right: 0px
+                  - color: '#F98C8C'
+          consume:
+            card:
+              type: custom:button-card
+              entity: sensor.accumulative_consumed_solar
+              show_icon: false
+              show_state: true
+              show_units: false
+              show_name: false
+              show_last_changed: false
+              styles:
+                card:
+                  - width: 150px
+                  - height: 80px
+                  - background-color: black
+                state:
+                  - font-size: 50px
+                  - font-family: Nunito
+                  - padding-top: 0px
+                  - padding-bottom: 40px
+                  - padding-left: 0px
+                  - padding-right: 0px
+                  - color: '#B7FFB7'
+      - type: custom:button-card
+        styles:
+          custom_fields:
+            export:
+              - padding-bottom: 0px
+              - background-color: black
+            cost:
+              - padding-bottom: 0px
+              - background-color: black
+          card:
+            - width: 300px
+            - height: 60px
+            - background-color: black
+          grid:
+            - grid-template-areas: '"export cost"'
+            - grid-template-columns: 50% 50%
+            - grid-template-rows: 1fr
+        custom_fields:
+          cost:
+            card:
+              type: custom:button-card
+              entity: sensor.total_cost_daily
+              show_icon: false
+              show_state: true
+              show_units: false
+              show_name: false
+              show_last_changed: false
+              styles:
+                card:
+                  - width: 150px
+                  - height: 80px
+                  - background-color: black
+                state:
+                  - font-size: 50px
+                  - font-family: Nunito
+                  - padding-top: 0px
+                  - padding-bottom: 40px
+                  - padding-left: 0px
+                  - padding-right: 0px
+                  - color: |
+                      [[[
+                        if (states['sensor.total_cost_daily'].state > '0')
+                          return '#b7ffb7';
+                        else
+                          return '#F98C8C';
+                      ]]]
+          export:
+            card:
+              type: custom:button-card
+              entity: sensor.grid_sold_energy_day
+              show_icon: false
+              show_state: true
+              show_units: false
+              show_name: false
+              show_last_changed: false
+              styles:
+                card:
+                  - width: 150px
+                  - height: 80px
+                  - background-color: black
+                state:
+                  - font-size: 50px
+                  - font-family: Nunito
+                  - margin-top: '-40px'
+                  - padding-top: 0px
+                  - padding-bottom: 0px
+                  - padding-left: 0px
+                  - padding-right: 0px
+                  - color: white

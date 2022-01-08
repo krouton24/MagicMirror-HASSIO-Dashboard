@@ -1,0 +1,60 @@
+type: custom:atomic-calendar-revive
+style: |
+  ha-card {
+    font-family: Nunito;
+    font-weight: bold
+    font-size: 1.3em;
+    overflow: hidden;
+  }
+dateColor: white
+dateSize: 175
+dayWrapperLineColor: white
+dimFinishedEvents: true
+disableCalEventLink: true
+disableCalLocationLink: true
+disableEventLink: true
+disableLocationLink: true
+entities:
+  - color: '#fec1a9'
+    entity: calendar.gmail_com
+    blacklist: Nutri
+  - color: '#fffd78'
+    entity: calendar.brad_cal
+  - color: '#e69c6e'
+    entity: calendar.wilma_cal
+  - color: '#78EA86'
+    entity: calendar.this_week
+  - blacklist: Big
+    entity: calendar.national_holidays
+eventBarColor: rgb(230, 254, 115)
+eventTitleColor: white
+eventTitleSize: 150
+fullDayEventText: ' All day'
+hideFinishedEvents: true
+hoursFormat: h:mma
+maxDaysToShow: 30
+noEventsForNextDaysText: No Upcoming Events
+showCurrentEventLine: false
+showDate: false
+showDescription: false
+showFullDayProgress: false
+showLoader: false
+showLocation: false
+showMonth: false
+showProgressBar: false
+showRelativeTime: false
+showWeekDay: true
+sortByStartTime: true
+theme: amoled
+timeColor: white
+timeFormat: h:mm a
+timeSize: 125
+title: ' '
+firstDayOfWeek: 1
+untilText: until
+disableCalLink: true
+showEventIcon: false
+dateFormat: d
+refreshInterval: 300
+showNoEventsForToday: false
+showHiddenText: false
