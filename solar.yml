@@ -303,10 +303,10 @@ cards:
                   - padding-right: 0px
                   - color: |
                       [[[
-                        if (states['sensor.total_cost_daily'].state > '0')
-                          return '#b7ffb7';
-                        else
-                          return '#F98C8C';
+                        const raw = states['sensor.total_cost_daily']?.state;
+                        const value = typeof raw === 'string' && raw.trim() !== '' ? Number(raw) : NaN;
+                        if (!Number.isFinite(value)) return '#808080';
+                        return value > 0 ? '#b7ffb7' : '#F98C8C';
                       ]]]
           export:
             card:
