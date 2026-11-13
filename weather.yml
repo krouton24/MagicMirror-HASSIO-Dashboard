@@ -21,7 +21,8 @@ cards:
           - value: mdi:weather-sunny
             entity_picture: |
               [[[
-                if (states['sun.sun'].state == 'above_horizon')
+                if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                if (states['sun.sun']?.state == 'above_horizon')
                   return "/local/icons/weather/clearr.png";
                 else
                   return "/local/icons/weather/clearr-night.png";
@@ -29,7 +30,8 @@ cards:
           - value: mdi:weather-rainy
             entity_picture: |
               [[[
-                if (states['sun.sun'].state == 'above_horizon')
+                if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                if (states['sun.sun']?.state == 'above_horizon')
                   return "/local/icons/weather/rainyy.png";
                 else
                   return "/local/icons/weather/rainyy-night.png";
@@ -37,7 +39,8 @@ cards:
           - value: mdi:weather-night
             entity_picture: |
               [[[
-                if (states['sun.sun'].state == 'above_horizon')
+                if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                if (states['sun.sun']?.state == 'above_horizon')
                   return "/local/icons/weather/clearr.png";
                 else
                   return "/local/icons/weather/clearr-night.png";
@@ -45,7 +48,8 @@ cards:
           - value: mdi:weather-cloudy
             entity_picture: |
               [[[
-                if (states['sun.sun'].state == 'above_horizon')
+                if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                if (states['sun.sun']?.state == 'above_horizon')
                   return "/local/icons/weather/cloudyy.png";
                 else
                   return "/local/icons/weather/cloudyy-night.png";
@@ -61,7 +65,8 @@ cards:
           - value: mdi:weather-pouring
             entity_picture: |
               [[[
-                if (states['sun.sun'].state == 'above_horizon')
+                if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                if (states['sun.sun']?.state == 'above_horizon')
                   return "/local/icons/weather/rainyy.png";
                 else
                   return "/local/icons/weather/rainyy-night.png";
@@ -69,7 +74,8 @@ cards:
           - value: mdi:weather-partly-rainy
             entity_picture: |
               [[[
-                if (states['sun.sun'].state == 'above_horizon')
+                if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                if (states['sun.sun']?.state == 'above_horizon')
                   return "/local/icons/weather/showerss.png";
                 else
                   return "/local/icons/weather/showerss-night.png";
@@ -77,7 +83,8 @@ cards:
           - value: mdi:weather-light-showers
             entity_picture: |
               [[[
-                if (states['sun.sun'].state == 'above_horizon')
+                if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                if (states['sun.sun']?.state == 'above_horizon')
                   return "/local/icons/weather/showerss.png";
                 else
                   return "/local/icons/weather/showerss-night.png";
@@ -85,7 +92,8 @@ cards:
           - value: mdi:weather-partly-cloudy
             entity_picture: |
               [[[
-                if (states['sun.sun'].state == 'above_horizon')
+                if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                if (states['sun.sun']?.state == 'above_horizon')
                   return "/local/icons/weather/mostlyy-sunny.png";
                 else
                   return "/local/icons/weather/mostlyy-sunny-night.png";
@@ -95,7 +103,8 @@ cards:
           - value: mdi:weather-lightning-rainy
             entity_picture: |
               [[[
-                if (states['sun.sun'].state == 'above_horizon')
+                if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                if (states['sun.sun']?.state == 'above_horizon')
                   return "/local/icons/weather/stormss.png";
                 else
                   return "/local/icons/weather/stormss-night.png";
@@ -135,7 +144,8 @@ cards:
                   type: custom:button-card
                   entity: |
                     [[[
-                      if (states['sun.sun'].state == 'above_horizon') 
+                      if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                      if (states['sun.sun']?.state == 'above_horizon') 
                         return "sensor.nextsunset";
                       else
                         return "sensor.nextsunrise";
@@ -143,14 +153,16 @@ cards:
                   layout: icon_state
                   entity_picture: |
                     [[[
-                      if (states['sun.sun'].state == 'above_horizon') 
+                      if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                      if (states['sun.sun']?.state == 'above_horizon') 
                         return "/local/icons/weather/sunset.png";
                       else
                         return "/local/icons/weather/sunrise.png";
                     ]]]
                   icon: |
                     [[[
-                      if (states['sun.sun'].state == 'above_horizon') 
+                      if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                      if (states['sun.sun']?.state == 'above_horizon') 
                         return "mdi:arrow-down-thick";
                       else
                         return "mdi:arrow-up-thick";
@@ -183,7 +195,8 @@ cards:
                   type: custom:button-card
                   entity: |
                     [[[
-                      if (states['sun.sun'].state == 'above_horizon')
+                      if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return null;
+                      if (states['sun.sun']?.state == 'above_horizon')
                         return "sensor.home_temp_max_0";
                       else
                         return "sensor.home_temp_min_1";
@@ -200,7 +213,8 @@ cards:
                       - font-family: NunitoBold
                       - color: |
                           [[[
-                            if (states['sun.sun'].state == 'above_horizon')
+                            if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return "#808080";
+                            if (states['sun.sun']?.state == 'above_horizon')
                               return "#ff785b";
                             else
                               return "#90daff";
@@ -412,12 +426,15 @@ cards:
                         - font-family: NunitoBold
                         - color: |
                             [[[
-                              if (states['sensor.uv_formatted'].state == 'Low') return "#82e0aa";
-                              if (states['sensor.uv_formatted'].state == 'Moderate') return "#f7dc6f";
-                              if (states['sensor.uv_formatted'].state == 'High') return "#eb984e";
-                              if (states['sensor.uv_formatted'].state == 'Very High') return "#ec7063";
-                              if (states['sensor.uv_formatted'].state == 'Extreme') return "#a93226";
-                              if (states['sun.sun'].state == 'below_horizon') return "#0a0a0a";
+                              const uv = states['sensor.uv_formatted']?.state;
+                              if (typeof uv !== 'string' || uv === 'unknown' || uv === 'unavailable') return "#808080";
+                              if (uv == 'Low') return "#82e0aa";
+                              if (uv == 'Moderate') return "#f7dc6f";
+                              if (uv == 'High') return "#eb984e";
+                              if (uv == 'Very High') return "#ec7063";
+                              if (uv == 'Extreme') return "#a93226";
+                              if (!['above_horizon', 'below_horizon'].includes(states['sun.sun']?.state)) return "#808080";
+                              if (states['sun.sun']?.state == 'below_horizon') return "#0a0a0a";
                               else return "#000000";
                             ]]]
                     style: |
