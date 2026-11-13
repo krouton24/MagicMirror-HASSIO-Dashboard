@@ -1,0 +1,16 @@
+{
+  "name": "magicmirror-ha-dashboard-deployer",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "ws": "8.21.0",
+    "yaml": "2.8.3"
+  }
+}
